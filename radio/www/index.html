@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Web radio control panel</title>
+		<link rel="stylesheet" type="text/css" href="styles/cp.css">
+		<script type="text/javascript" src="scripts/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="scripts/common.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="title" id="title">Webradio</div>
+			<div class="content">
+				<div class="network_track_title subtitle">
+					<span id="network_track_title">Track: n/a</span>
+				</div>
+				<div class="cntrl_btn">
+						
+						<img class="img" onclick="playItemByDirection('prev')" src="img/previous.png"> 
+						<img class="img" onclick="sendStopPlay()" src="img/stop.png">
+						<img class="img" onclick="playCurrentItem()" src="img/play.png"> 
+						<img class="img" onclick="playItemByDirection('next') " src="img/next.png">						
+						<div class="preview">
+							<span>prev</span><span>stop</span><span>play</span><span>next</span>
+						</div>
+						<div class="volfader">
+							<input type="range" min="0" max="100" step="1" value="100" orient="horizontal" id="volumeSlider">
+							<div>
+								<div pseudo="-webkit-slider-runnable-track" id="track">
+									<div id="thumb">	
+									 
+									</div>
+								</div>
+							</div>
+							<span>- Volume +</span>
+						</div>
+				</div>
+				<table class="list">
+					<thead>
+						<tr>
+							<th>Streams</th><th class="manage">Sort/Remove</th>
+						</tr>
+					</thead>
+					<tbody>		
+					</tbody>
+				</table>
+				<form>
+					<input class="button" type="button" id="show_manage_streams_button" value="Manage streams">
+				</form>
+				<form class="form" id="add_stream_block" style="display:none">
+					<div class="subtitle">Add stream</div>
+					<div class="form_item">
+						<div class="label">Title</div>
+						<input type="text" class="input_title" id="stream_title">
+						<p class="clear" />
+					</div>
+					<div class="form_item">
+						<div class="label">URL</div>
+						<input type="text" class="input_url" id="stream_url">
+						<p class="clear" />
+					</div>
+
+					<input class="button" type="button" id="add_stream_button" value="Add">				
+					<input class="button" type="button" id="cancel_add_stream_button" value="Cancel">	
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
