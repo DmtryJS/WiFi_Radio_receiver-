@@ -107,6 +107,7 @@ td.contrl {
  }
  .cntrl_btn span {
  	display:inline-block;
+ 	font-size: 0.9em;
  }
 
  .cntrl_btn img:not(:first-child)
@@ -116,7 +117,7 @@ td.contrl {
 }
 
  .preview span:not(:first-child){
- 	margin-left:25px;
+ 	margin-left:18px;
  }
 .volfader {
 	margin-top:30px;

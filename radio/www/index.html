@@ -17,11 +17,10 @@
 				<div class="cntrl_btn">
 						
 						<img class="img" onclick="playItemByDirection('prev')" src="img/previous.png"> 
-						<img class="img" onclick="sendStopPlay()" src="img/stop.png">
-						<img class="img" onclick="playCurrentItem()" src="img/play.png"> 
+						<img class="img" id="play_stop" src="img/stop.png"> 
 						<img class="img" onclick="playItemByDirection('next') " src="img/next.png">						
 						<div class="preview">
-							<span>prev</span><span>stop</span><span>play</span><span>next</span>
+							<span>prev</span><span>stop/play</span><span>next</span>
 						</div>
 						<div class="volfader">
 							<input type="range" min="0" max="100" step="1" value="100" orient="horizontal" id="volumeSlider">

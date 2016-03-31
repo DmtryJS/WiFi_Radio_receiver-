@@ -9,14 +9,10 @@ var curVol;
 
 $(document).ready(function() {
 	loadCurrentVol();
-	/*if($(window).width()<'600') {
-		$('#title').html($(window).width())
-	}*/
+
 	$("#show_manage_streams_button").click(function() {
 		$("#show_manage_streams_button").hide();
 		$("#add_stream_block").show();
-		/*$(".network_label_selected").css("width", "390px");*/
-		/*$(".network_label").css("width", "390px");*/
 		$(".manage").show();
 	});
 
@@ -26,7 +22,6 @@ $(document).ready(function() {
 		$("#stream_url").val("");
 		$("#add_stream_block").hide();
 		$("#show_manage_streams_button").show();
-		/*$(".network_label_selected").css("width", "505px");*/
 		$(".manage").hide();
 	});
 	$("#add_stream_button").click(function() {
@@ -38,7 +33,21 @@ $(document).ready(function() {
 	$("#volumeSlider").change(function(){
 		volCntrl($("#volumeSlider").val());
 	})
-				
+	
+	$('#play_stop').on('click', function() {
+		var val = $(this).is('.stoped');
+		if (!val) {
+			$(this).addClass('stoped')
+				.attr('src', 'img/play.png');
+				sendStopPlay();
+		} else {
+			$(this).removeClass('stoped')
+				.attr('src', 'img/stop.png');
+				playCurrentItem();
+		}
+		
+	})
+
 });
 
 function loadItemsList(mode) {
@@ -77,6 +86,7 @@ function	loadCurrentVol() {
 
 function playCurrentItem() {
 	playItem("network", itemsCurrent);
+
 }
 
 
@@ -130,20 +140,18 @@ function playItem(mode, id) {
 	setSelectedRow(mode, id);
 	
 	sendPlayItem(id);
+
+	if(!$('#play_stop').is('.stoped')) return; 
+	$('#play_stop').removeClass('stoped').attr('src', 'img/stop.png');
+	
 }
 
 function setSelectedRow(mode, id) {
-	/*$("." + mode + "_label_selected").attr("class", mode + "_label");
-	$("." + mode + "_label_link_selected").attr("class", mode + "_label_link");*/
+
 	$(".list_item_selected").attr("class", "list_item");
 	
-	/*var el = $("#" + mode + "_label" + id);
-	el.attr("class", mode + "_label_selected");*/
-
 	var el2 = $("#" + mode + "_label" + id).closest('tr');
 	el2.attr("class", "list_item_selected" );
-
-	/*$("#" + mode + "_label_link" + id).attr("class", mode + "_label_link_selected");*/
 	
 }
 
@@ -162,7 +170,6 @@ function removeItem(mode, subtitle, sort, remove, id) {
 	
 	updateItemsList(mode, 1, subtitle, sort, remove);
 	
-	/*$(".network_label_selected").css("width", "390px");*/
 	$(".manage").show();
 
 	sendItemsUpdate(mode, id, "remove");
@@ -191,8 +198,6 @@ function moveItem(mode, subtitle, sort, remove, id, dir) {
 	
 	updateItemsList(mode, 1, subtitle, sort, remove);
 
-
-	/*$(".network_label_selected").css("width", "390px");*/
 	$(".manage").show();
 
 	sendItemsUpdate(mode, id, "move");
@@ -229,7 +234,6 @@ function addStream() {
 	
 	updateItemsList("network", 1, false, true, true);
 
-	/*$(".network_label_selected").css("width", "390px");*/
 	$(".manage").show();
 
 	var rforeign = /[^\u0000-\u007f]/;
