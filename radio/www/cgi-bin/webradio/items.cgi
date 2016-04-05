@@ -4,6 +4,7 @@ path="/www/data"
 
 action=`echo "$QUERY_STRING" | sed -n 's/^.*action=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"`
 
+
 echo "Content-type: text/html; charset=utf8\n"
 echo ""
 
@@ -15,4 +16,6 @@ elif [ $action == "curnetwork" ] ; then
 	echo "`cat $path/curnetwork`" 
 elif [ $action == "currentvol" ] ; then
 	echo `amixer -c 0 sget Speaker Playback Volume`
+
+
 fi

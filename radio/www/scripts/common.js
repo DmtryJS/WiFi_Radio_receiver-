@@ -71,14 +71,14 @@ function loadItemsList(mode) {
 
 function	loadCurrentVol() {
 	var url = host + "items.cgi?action=currentvol";
-	var arr = [];
 
 	$.ajax({
 	  type: "GET",
 	  url: url,
 	  success: function(data){
-	    arr = data.split(" ");
-	 	 curVol = arr[32].slice(1,arr[32].length-2);
+	  		var tmp = data.match(/\d+\%/)[0];
+	 
+	 	 	curVol = tmp.slice(0,tmp.length-1);
   		}
 });
 };
