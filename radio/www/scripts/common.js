@@ -5,9 +5,11 @@ var isManageMode;
 var isItemChanged;
 var encoding = "en";
 var ajaxBusy = false;
-var curVol; 
+var curVol;
+	 
 
 $(document).ready(function() {
+
 	loadCurrentVol();
 
 	$("#show_manage_streams_button").click(function() {
@@ -16,13 +18,13 @@ $(document).ready(function() {
 		$(".manage").show();
 	});
 
-
 	$("#cancel_add_stream_button").click(function() {
 		$("#stream_title").val("");
 		$("#stream_url").val("");
 		$("#add_stream_block").hide();
 		$("#show_manage_streams_button").show();
 		$(".manage").hide();
+
 	});
 	$("#add_stream_button").click(function() {
 		addStream();
@@ -47,6 +49,18 @@ $(document).ready(function() {
 		}
 		
 	})
+
+	$('.scrol button').on('click', function() {
+		var height = $(document).height();
+
+		if ($(this).is('.scrolUp')) {
+			$('body').animate({scrollTop : 0},800);
+		}
+		else {
+			$('body').animate({scrollTop : height-300},800);
+		}
+	})
+
 
 });
 
